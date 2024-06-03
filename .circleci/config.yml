@@ -28,7 +28,7 @@ jobs:
           destination: node-build
   test-java:
     docker:
-      - image: cimg/openjdk:17.0
+      - image: cimg/openjdk:8.0.402
     working_directory: ~/project/springboot
     steps:
       - checkout:
