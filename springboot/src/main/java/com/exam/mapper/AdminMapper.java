@@ -11,7 +11,7 @@ public interface AdminMapper {
     @Select("select adminName,sex,tel,email,cardId,role from admin")
     public List<Admin> findAll();
 
-    @Select("select adminName,sex,tel,email,cardId,role from admin where adminId = #{adminId}")
+    @Select("select adminId,adminName,sex,tel,email,pwd,cardId,role from admin where adminId = #{adminId}")
     public Admin findById(Integer adminId);
 
     @Delete("delete from admin where adminId = #{adminId}")
@@ -22,7 +22,7 @@ public interface AdminMapper {
     public int update(Admin admin);
 
     @Options(useGeneratedKeys = true,keyProperty = "adminId")
-    @Insert("insert into admin(adminName,sex,tel,email,pwd,cardId,role) " +
-            "values(#{adminName},#{sex},#{tel},#{email},#{pwd},#{cardId},#{role})")
+    @Insert("insert into admin(adminId,adminName,sex,tel,email,pwd,cardId,role) " +
+            "values(#{adminId},#{adminName},#{sex},#{tel},#{email},#{pwd},#{cardId},#{role})")
     public int add(Admin admin);
 }

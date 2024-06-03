@@ -2,6 +2,7 @@ package com.exam.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.exam.entity.Admin;
 import com.exam.entity.FillQuestion;
 
 import java.util.List;
@@ -16,5 +17,7 @@ public interface FillQuestionService {
 
     int add(FillQuestion fillQuestion);
 
-    List<Integer> findBySubject(String subject,Integer pageNo);
+    public FillQuestion findById(Integer questionId);
+
+    List<Integer> findBySubject(String subject, Integer pageNo);
 }

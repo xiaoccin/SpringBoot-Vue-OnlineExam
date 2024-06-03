@@ -75,7 +75,7 @@ public class AdminServiceImplTest {
     @Transactional
     public void add() throws Exception{
         Admin addAdmin = new Admin();
-        addAdmin.setAdminId(9529);
+        addAdmin.setAdminId(9530);
         addAdmin.setAdminName("超级管理员");
         addAdmin.setSex("男");
         addAdmin.setTel("13658377857");
@@ -85,6 +85,6 @@ public class AdminServiceImplTest {
         addAdmin.setRole("0");
         adminService.add(addAdmin);
 
-        assertEquals(JSON.toJSONString(addAdmin),JSON.toJSONString(adminService.findById(9529)));
+        assertEquals(JSON.toJSONString(addAdmin),JSON.toJSONString(adminService.findById(9530)));
     }
 }

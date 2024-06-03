@@ -35,7 +35,5 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public int add(Admin admin) {
-        return 0;
-    }
+    public int add(Admin admin) { return adminMapper.add(admin);}
 }

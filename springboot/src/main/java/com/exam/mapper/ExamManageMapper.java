@@ -28,8 +28,8 @@ public interface ExamManageMapper {
     int update(ExamManage exammanage);
 
     @Options(useGeneratedKeys = true,keyProperty = "examCode")
-    @Insert("insert into exam_manage(description,source,paperId,examDate,totalTime,grade,term,major,institute,totalScore,type,tips)" +
-            " values(#{description},#{source},#{paperId},#{examDate},#{totalTime},#{grade},#{term},#{major},#{institute},#{totalScore},#{type},#{tips})")
+    @Insert("insert into exam_manage(examCode,description,source,paperId,examDate,totalTime,grade,term,major,institute,totalScore,type,tips)" +
+            " values(#{examCode},#{description},#{source},#{paperId},#{examDate},#{totalTime},#{grade},#{term},#{major},#{institute},#{totalScore},#{type},#{tips})")
     int add(ExamManage exammanage);
 
     /**

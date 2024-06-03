@@ -2,6 +2,7 @@ package com.exam.mapper;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.exam.entity.Admin;
 import com.exam.entity.FillQuestion;
 import org.apache.ibatis.annotations.*;
 
@@ -10,6 +11,9 @@ import java.util.List;
 //填空题
 @Mapper
 public interface FillQuestionMapper {
+
+    @Select("select questionId,subject,question,answer,score,level from fill_question where questionId = #{questionId}")
+    public FillQuestion findById(Integer questionId);
 
     @Select("select * from fill_question where questionId in (select questionId from paper_manage where questionType = 2 and paperId = #{paperId})")
     List<FillQuestion> findByIdAndType(Integer paperId);
@@ -25,8 +29,8 @@ public interface FillQuestionMapper {
     FillQuestion findOnlyQuestionId();
 
     @Options(useGeneratedKeys = true,keyProperty ="questionId" )
-    @Insert("insert into fill_question(subject,question,answer,analysis,level,section) values " +
-            "(#{subject,},#{question},#{answer},#{analysis},#{level},#{section})")
+    @Insert("insert into fill_question(questionId,subject,question,answer,analysis,level,section) values " +
+            "(#{questionId},#{subject,},#{question},#{answer},#{analysis},#{level},#{section})")
     int add(FillQuestion fillQuestion);
 
     @Select("select questionId from fill_question where subject = #{subject} order by rand() desc limit #{pageNo}")
