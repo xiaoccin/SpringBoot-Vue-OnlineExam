@@ -39,9 +39,25 @@ public class AdminServiceImplTest {
         admin.setRole("0");
     }
 
+
     @Test
+    /**
+     * 测试用例：hjhhhf
+     * 测试结果：程序错误
+     * 原因：未进行非法格式拦截
+     *
+     * 测试用例：2819281092
+     * 测试结果：程序错误
+     * 原因：整数过大，未进行超出int类型约束时输入Id的控制
+     *
+     * 测试用例：9530
+     * 测试结果：程序错误
+     * 原因：输入值不存在，没有对不存在的内容进行控制
+     */
     public void findById() throws Exception{
-        assertEquals(JSON.toJSONString(admin) ,JSON.toJSONString(adminService.findById(9527)) );
+        assertEquals(JSON.toJSONString(admin),JSON.toJSONString(adminService.findById(9527)) );
+        assertEquals("adminid not found",adminService.findById(9530));
+        //assertEquals("id不应为字符串",adminService.findById(access));
     }
 
     @Test
@@ -49,7 +65,9 @@ public class AdminServiceImplTest {
     @Transactional
     public void deleteById() throws Exception{
         adminService.deleteById(9528);
+        adminService.deleteById(9530);
         assertEquals(JSON.toJSONString(null),JSON.toJSONString(adminService.findById(9528)));
+        assertEquals(JSON.toJSONString(null),JSON.toJSONString(adminService.findById(9530)));
     }
 
     @Test
@@ -88,3 +106,4 @@ public class AdminServiceImplTest {
         assertEquals(JSON.toJSONString(addAdmin),JSON.toJSONString(adminService.findById(9530)));
     }
 }
+

@@ -45,7 +45,7 @@ public class FillQuestionServiceImplTest {
     @Test
     public void findOnlyQuestionId() {
         FillQuestion findquestion = new FillQuestion();
-        findquestion.setQuestionId(10028);
+        findquestion.setQuestionId(10030);
         assertEquals(JSON.toJSONString(findquestion),JSON.toJSONString(service.findOnlyQuestionId()));
     }
     /*根据mapper中的sql语句可知，因其sql语句对Id进行降序排序，该函数查询目标为questionId末位，故为10028*/
